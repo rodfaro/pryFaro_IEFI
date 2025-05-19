@@ -14,6 +14,7 @@ namespace pryFaro_IEFI.Models
     {
         SqlConnection conn = new SqlConnection("Server=localhost;Database=IEFI;Trusted_Connection=True;");
 
+        #region Metodos para Administradores
         public int IniciarSesion(clsUsuariosReg usuario)
         {
             string query = "SELECT COUNT(*) FROM Usuarios WHERE Usuario COLLATE SQL_Latin1_General_CP1_CS_AS = @Usuario AND @Passw COLLATE SQL_Latin1_General_CP1_CS_AS = Passw";
@@ -47,6 +48,6 @@ namespace pryFaro_IEFI.Models
             }
             return resultado;
         }
-
+        #endregion
     }
 }

@@ -11,6 +11,7 @@ namespace pryFaro_IEFI.Models
         public int idUser { get; set; }
         public string Usuario { get; set; }
         public string Passw { get; set; }
+        public int Admin { get; set; }
 
     }
 }

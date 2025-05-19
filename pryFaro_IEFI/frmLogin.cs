@@ -29,7 +29,12 @@ namespace pryFaro_IEFI
             if (resultado >= 1)
             {
                 //ABRE EL OTRO FORM
-                MessageBox.Show("Funca");
+
+                string user = usuario.Usuario;
+                this.Hide();
+                frmPrincipal ventana = new frmPrincipal(user);
+               
+                ventana.ShowDialog();
             }
             else
             {
