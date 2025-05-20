@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace pryFaro_IEFI.Models
 {
-    internal class clsUsuariosReg
+    public class clsUsuariosReg
     {
         public int idUser { get; set; }
         public string Usuario { get; set; }
         public string Passw { get; set; }
-        public int Admin { get; set; }
+        public bool Admin { get; set; }
 
     }
 }

@@ -62,6 +62,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(222, 29);
             this.txtUsuario.TabIndex = 2;
+            this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
             // 
             // txtPassw
             // 
@@ -70,9 +71,11 @@
             this.txtPassw.Name = "txtPassw";
             this.txtPassw.Size = new System.Drawing.Size(222, 29);
             this.txtPassw.TabIndex = 3;
+            this.txtPassw.TextChanged += new System.EventHandler(this.txtPassw_TextChanged);
             // 
             // btnIniciarSesion
             // 
+            this.btnIniciarSesion.Enabled = false;
             this.btnIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIniciarSesion.Location = new System.Drawing.Point(92, 245);
             this.btnIniciarSesion.Name = "btnIniciarSesion";

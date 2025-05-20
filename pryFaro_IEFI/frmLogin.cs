@@ -24,15 +24,12 @@ namespace pryFaro_IEFI
             usuario.Usuario = txtUsuario.Text;
             usuario.Passw = txtPassw.Text;
 
-            int resultado = conn.IniciarSesion(usuario);
+            clsUsuariosReg returnUsuario = conn.IniciarSesion(usuario);
 
-            if (resultado >= 1)
+            if (returnUsuario.idUser != -1)
             {
-                //ABRE EL OTRO FORM
-
-                string user = usuario.Usuario;
                 this.Hide();
-                frmPrincipal ventana = new frmPrincipal(user);
+                frmPrincipal ventana = new frmPrincipal(returnUsuario);
                
                 ventana.ShowDialog();
             }
@@ -43,5 +40,22 @@ namespace pryFaro_IEFI
         }
 
 
+        private void Controlador()
+        {
+            if (txtPassw.Text != string.Empty && txtUsuario.Text != string.Empty)
+            {
+                btnIniciarSesion.Enabled = true;
+            }
+            else btnIniciarSesion.Enabled = false;
+        }
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+
+        private void txtPassw_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
     }
 }
