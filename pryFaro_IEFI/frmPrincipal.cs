@@ -57,5 +57,16 @@ namespace pryFaro_IEFI
             ventana.ShowDialog();
 
         }
+
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAuditoria ventana = new frmAuditoria();
+            ventana.ShowDialog();
+        }
     }
 }

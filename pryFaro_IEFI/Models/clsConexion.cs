@@ -92,5 +92,40 @@ namespace pryFaro_IEFI.Models
                 }
             }
         }
+
+        public DataTable Listar()
+        {
+            string query = $@"SELECT a.Id, u.Usuario, a.Fecha, a.TiempoTrabajado, a.Descripcion
+                                FROM Auditar a
+                                JOIN Usuarios u ON a.IdUsuario = u.idUsuario
+                                ORDER BY a.Id ASC";
+
+            DataTable dt = new DataTable();
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    adapter.Fill(dt);
+                };
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error: {ex.Message}"); ;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
     }
 }

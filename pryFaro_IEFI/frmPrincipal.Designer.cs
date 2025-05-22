@@ -41,6 +41,7 @@
             this.lblFecha = new System.Windows.Forms.ToolStripStatusLabel();
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.lblTiempoPrueba = new System.Windows.Forms.Label();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,8 +76,9 @@
             // administracionToolStripMenuItem
             // 
             this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.administrarUsuariosToolStripMenuItem,
-            this.auditoriaToolStripMenuItem});
+            this.auditoriaToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.administrarUsuariosToolStripMenuItem});
             this.administracionToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
             this.administracionToolStripMenuItem.Size = new System.Drawing.Size(106, 21);
@@ -87,12 +89,14 @@
             this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
             this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.administrarUsuariosToolStripMenuItem.Text = "Administrar Usuarios...";
+            this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
             // auditoriaToolStripMenuItem
             // 
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
             this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.auditoriaToolStripMenuItem.Text = "Auditoria...";
+            this.auditoriaToolStripMenuItem.Click += new System.EventHandler(this.auditoriaToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -146,6 +150,11 @@
             this.lblTiempoPrueba.TabIndex = 2;
             this.lblTiempoPrueba.Text = "0";
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(204, 6);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,5 +193,6 @@
         private System.Windows.Forms.Label lblTiempoPrueba;
         private System.Windows.Forms.ToolStripStatusLabel lblFecha;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
     }
 }
