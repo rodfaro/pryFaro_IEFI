@@ -39,7 +39,7 @@ namespace pryFaro_IEFI
             }
         }
 
-
+        #region Controladores
         private void Controlador()
         {
             if (txtPassw.Text != string.Empty && txtUsuario.Text != string.Empty)
@@ -57,5 +57,6 @@ namespace pryFaro_IEFI
         {
             Controlador();
         }
+        #endregion
     }
 }

@@ -1,0 +1,44 @@
+CREATE DATABASE IEFI;
+GO
+
+USE IEFI;
+
+CREATE TABLE Usuarios(
+	idUsuario INT PRIMARY KEY IDENTITY(1,1),
+	Usuario VARCHAR(25) NOT NULL,
+	Passw VARCHAR(25) NOT NULL,
+	Admin BIT NOT NULL
+);
+GO
+
+CREATE TABLE Auditar(
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	IdUsuario INT,
+	Fecha DATETIME DEFAULT GETDATE(),
+	TiempoTrabajado INT NOT NULL,
+	Descripcion VARCHAR(200),
+
+	FOREIGN KEY (IdUsuario) REFERENCES Usuarios(idUsuario)
+);
+GO
+
+--REGISTROS DE USUARIOS
+
+INSERT INTO Usuarios (Usuario, Passw, Admin)
+VALUES 
+('rodri', '1234', 0),
+('ies21', 'ies21', 0),
+('admin', 'admin', 1),
+('superadmin', 'admin1234', 1),
+('user', 'password', 0);
+GO
+
+--REGISTROS DE AUDITORIA
+INSERT INTO Auditar (IdUsuario, TiempoTrabajado, Descripcion)
+VALUES 
+(1, 120, 'Trabajo en la actualización de la base de datos'),
+(2, 150, 'Revisión de datos de clientes'),
+(3, 200, 'Administración de cuentas de usuarios'),
+(4, 180, 'Gestión de permisos y roles de usuarios'),
+(5, 90, 'Mantenimiento de servidores y backups');
+GO

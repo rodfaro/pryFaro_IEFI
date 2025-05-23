@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAuditoria));
             this.grpBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
@@ -44,7 +45,7 @@
             this.grpBox.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBox.Location = new System.Drawing.Point(9, 3);
             this.grpBox.Name = "grpBox";
-            this.grpBox.Size = new System.Drawing.Size(1211, 589);
+            this.grpBox.Size = new System.Drawing.Size(1246, 589);
             this.grpBox.TabIndex = 0;
             this.grpBox.TabStop = false;
             this.grpBox.Text = "Historial de Logins";
@@ -68,19 +69,23 @@
             // 
             // dgvLogins
             // 
+            this.dgvLogins.AllowUserToAddRows = false;
+            this.dgvLogins.AllowUserToDeleteRows = false;
+            this.dgvLogins.AllowUserToResizeRows = false;
             this.dgvLogins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLogins.Location = new System.Drawing.Point(6, 54);
             this.dgvLogins.Name = "dgvLogins";
             this.dgvLogins.ShowRowErrors = false;
-            this.dgvLogins.Size = new System.Drawing.Size(1198, 528);
+            this.dgvLogins.Size = new System.Drawing.Size(1234, 528);
             this.dgvLogins.TabIndex = 0;
             // 
             // frmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1228, 596);
+            this.ClientSize = new System.Drawing.Size(1267, 596);
             this.Controls.Add(this.grpBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAuditoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Historial de Logins";

@@ -22,6 +22,7 @@ namespace pryFaro_IEFI
             _user = user;
         }
 
+        #region Metodos del Timer y frmPrincipal internas
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
             lblUser.Text = _user.Usuario;
@@ -44,7 +45,9 @@ namespace pryFaro_IEFI
             //Muestra la fecha
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy HH:mm");
         }
+        #endregion
 
+        #region VENTANAS 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int minTrabajados = (int)Math.Round((double)_tiempoTrabajoSeg / 60);
@@ -60,6 +63,11 @@ namespace pryFaro_IEFI
 
         private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (_user.Admin == true)
+            {
+                frmAdministrarUsuarios ventana = new frmAdministrarUsuarios(_user);
+                ventana.ShowDialog();
+            }else MessageBox.Show($"El usuario: '{_user.Usuario}' NO tiene permisos de Administrador", "Permisos insuficientes", MessageBoxButtons.OK, MessageBoxIcon.Hand);
 
         }
 
@@ -68,5 +76,6 @@ namespace pryFaro_IEFI
             frmAuditoria ventana = new frmAuditoria();
             ventana.ShowDialog();
         }
+        #endregion
     }
 }

@@ -22,23 +22,86 @@ CREATE TABLE Auditar(
 );
 GO
 
---REGISTROS DE USUARIOS
-
-INSERT INTO Usuarios (Usuario, Passw, Admin)
-VALUES 
-('rodri', '1234', 0),
-('ies21', 'ies21', 0),
+--REGISTRO DE USUARIOS
+INSERT INTO Usuarios (Usuario, Passw, Admin) VALUES
 ('admin', 'admin', 1),
-('superadmin', 'admin1234', 1),
-('user', 'password', 0);
+('root', 'root', 1),
+('user', '123', 0),
+('lgarcia', 'garcia2024', 0),
+('csanchez', 'san123', 0),
+('kadmin', 'admin456', 1),
+('nrivera', 'nrpass', 0),
+('tadmin', 'admin789', 1),
+('mmartinez', 'mmpass', 0),
+('jfernandez', 'jfpass', 0),
+('bramos', 'brpass', 0),
+('rfarro', 'rf123', 0),
+('vlopez', 'vlopass', 0),
+('shernandez', 'shpass', 0),
+('egarcia', 'egpass', 0);
 GO
 
---REGISTROS DE AUDITORIA
-INSERT INTO Auditar (IdUsuario, TiempoTrabajado, Descripcion)
+--REGISTRO DE AUDITORIAS
+INSERT INTO Auditar (IdUsuario, TiempoTrabajado, Descripcion) 
 VALUES 
-(1, 120, 'Trabajo en la actualización de la base de datos'),
-(2, 150, 'Revisión de datos de clientes'),
-(3, 200, 'Administración de cuentas de usuarios'),
-(4, 180, 'Gestión de permisos y roles de usuarios'),
-(5, 90, 'Mantenimiento de servidores y backups');
+(18, 45, 'Inicio de sesión y revisión de panel'),
+(19, 60, 'Gestión de usuarios activos'),
+(20, 35, 'Actualización de datos de contacto'),
+(21, 50, 'Revisión de logs del sistema'),
+(22, 40, 'Alta de nuevo usuario'),
+(23, 55, 'Edición de membresías'),
+(24, 30, 'Modificación de permisos'),
+(25, 65, 'Control de acceso revisado'),
+(26, 70, 'Actualización de contraseña'),
+(27, 80, 'Visualización de reportes'),
+(28, 90, 'Mantenimiento del sistema'),
+(29, 40, 'Control de estados de cuenta'),
+(30, 35, 'Exportación de datos'),
+(31, 75, 'Carga masiva de usuarios'),
+(18, 60, 'Análisis de actividad reciente'),
+(19, 45, 'Revisión de accesos no válidos'),
+(20, 55, 'Verificación de identidad de usuarios'),
+(21, 50, 'Control de sesiones activas'),
+(22, 65, 'Reinicio de contraseñas'),
+(23, 30, 'Verificación de integridad'),
+(24, 48, 'Modificación de datos sensibles'),
+(25, 38, 'Supervisión de cambios'),
+(26, 62, 'Cierre de sesión forzado'),
+(27, 58, 'Análisis de uso del sistema'),
+(28, 33, 'Cambio de estado de usuario'),
+(29, 47, 'Actualización de historial'),
+(30, 52, 'Verificación de datos duplicados'),
+(31, 66, 'Mantenimiento de roles'),
+(18, 59, 'Revisión de fallos de autenticación'),
+(19, 43, 'Optimización del sistema'),
+(20, 36, 'Corrección de registros mal cargados'),
+(21, 67, 'Validación de estructura de tablas'),
+(22, 55, 'Revisión de actividad sospechosa'),
+(23, 72, 'Auditoría completa de sesión'),
+(24, 61, 'Gestión de datos históricos'),
+(25, 49, 'Consulta de reportes'),
+(26, 44, 'Edición de privilegios'),
+(27, 53, 'Mantenimiento de configuración'),
+(28, 60, 'Acceso como administrador'),
+(29, 34, 'Generación de logs'),
+(30, 48, 'Sincronización con servidor'),
+(31, 50, 'Revisión manual de registros'),
+(18, 65, 'Supervisión de cambios recientes'),
+(19, 47, 'Revisión de políticas de acceso'),
+(20, 58, 'Implementación de seguridad'),
+(21, 42, 'Tareas administrativas varias'),
+(22, 39, 'Consulta de auditorías pasadas'),
+(23, 64, 'Revisión de inconsistencias'),
+(24, 31, 'Respaldo de base de datos'),
+(25, 70, 'Monitoreo de sesiones'),
+(26, 55, 'Verificación de logs de actividad'),
+(27, 36, 'Control de registro de accesos'),
+(28, 63, 'Detección de errores'),
+(29, 57, 'Revisión de mantenimiento'),
+(30, 62, 'Cambio de configuración avanzada'),
+(31, 40, 'Soporte técnico'),
+(18, 59, 'Seguimiento de tareas programadas'),
+(19, 46, 'Análisis de rendimiento del sistema'),
+(20, 33, 'Revisión de funcionalidades habilitadas'),
+(21, 50, 'Evaluación de sistema de permisos');
 GO
