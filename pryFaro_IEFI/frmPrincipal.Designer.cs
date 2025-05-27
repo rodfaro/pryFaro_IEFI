@@ -82,8 +82,8 @@
             this.administrarUsuariosToolStripMenuItem});
             this.administracionToolStripMenuItem.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
-            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(106, 21);
-            this.administracionToolStripMenuItem.Text = "Administracion";
+            this.administracionToolStripMenuItem.Size = new System.Drawing.Size(103, 21);
+            this.administracionToolStripMenuItem.Text = "Administrador";
             // 
             // auditoriaToolStripMenuItem
             // 

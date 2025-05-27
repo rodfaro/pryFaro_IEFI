@@ -25,8 +25,11 @@ namespace pryFaro_IEFI
             //Verifica que no exista ese usuario
             //Crea el usuario
             clsUsuariosReg usuario = new clsUsuariosReg();
-            usuario.Usuario = txtUsuario.Text;
-            usuario.Passw = txtPassw.Text;
+            usuario.Usuario = txtUsuario.Text.Trim();
+            usuario.Passw = txtPassw.Text.Trim();
+            usuario.Nombre = txtNombre.Text.Trim();
+            usuario.Celular = txtCelular.Text.Trim();
+            usuario.Direccion = txtDireccion.Text.Trim();
             if (cmbAdmin.SelectedIndex == 0)
                 usuario.Admin = true;
             else usuario.Admin = false;
@@ -54,6 +57,9 @@ namespace pryFaro_IEFI
             txtPassw.Text = string.Empty;
             txtUsuario.Text = string.Empty;
             cmbAdmin.SelectedIndex = 1;
+            txtCelular.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtNombre.Text = string.Empty;
         }
         private void Controlador()
         {
@@ -77,5 +83,21 @@ namespace pryFaro_IEFI
             Controlador();
         }
         #endregion
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

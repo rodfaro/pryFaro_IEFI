@@ -25,6 +25,16 @@ namespace pryFaro_IEFI
         #region Metodos del Timer y frmPrincipal internas
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            if (_user.Admin == true)
+            {
+                administracionToolStripMenuItem.Enabled = true;
+                administracionToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                administracionToolStripMenuItem.Enabled = false;
+                administracionToolStripMenuItem.Visible = false;
+            }
             lblUser.Text = _user.Usuario;
             Timer.Start();
             

@@ -156,6 +156,9 @@ namespace pryFaro_IEFI
                 usuarioNuevo.Usuario = dgvUsers.Rows[e.RowIndex].Cells["Usuario"].Value.ToString();
                 usuarioNuevo.Passw = dgvUsers.Rows[e.RowIndex].Cells["Passw"].Value.ToString();
                 usuarioNuevo.Admin = (bool)dgvUsers.Rows[e.RowIndex].Cells["Admin"].Value;
+                usuarioNuevo.Nombre = dgvUsers.Rows[e.RowIndex].Cells["Nombre"].Value.ToString();
+                usuarioNuevo.Direccion = dgvUsers.Rows[e.RowIndex].Cells["Direccion"].Value.ToString();
+                usuarioNuevo.Celular = dgvUsers.Rows[e.RowIndex].Cells["Celular"].Value.ToString();
 
                 if (_actualUser.idUser != usuarioNuevo.idUser)
                 {

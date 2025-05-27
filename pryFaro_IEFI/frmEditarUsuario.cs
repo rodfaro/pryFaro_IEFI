@@ -30,6 +30,9 @@ namespace pryFaro_IEFI
             txtId.Text = _user.idUser.ToString();
             txtUsuario.Text = _user.Usuario;
             txtPassw.Text = _user.Passw;
+            txtNombre.Text = _user.Nombre;
+            txtDireccion.Text = _user.Direccion;
+            txtCelular.Text = _user.Celular;
             if (_user.Admin == true)
                 cmbAdmin.SelectedIndex = 0;
             else if (_user.Admin == false)
@@ -38,9 +41,12 @@ namespace pryFaro_IEFI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            _user.idUser = int.Parse(txtId.Text);
-            _user.Usuario = txtUsuario.Text;
-            _user.Passw = txtPassw.Text;
+            _user.idUser = int.Parse(txtId.Text.Trim());
+            _user.Usuario = txtUsuario.Text.Trim();
+            _user.Passw = txtPassw.Text.Trim();
+            _user.Nombre = txtNombre.Text.Trim();
+            _user.Celular = txtCelular.Text.Trim();
+            _user.Direccion = txtDireccion.Text.Trim();
             if (cmbAdmin.SelectedIndex == 0)
                 _user.Admin = true;
             else if (cmbAdmin.SelectedIndex == 1)
@@ -76,6 +82,9 @@ namespace pryFaro_IEFI
             txtPassw.Text = string.Empty;
             txtUsuario.Text = string.Empty;
             cmbAdmin.SelectedIndex = 1;
+            txtDireccion.Text = string.Empty;
+            txtCelular.Text = string.Empty;
+            txtNombre.Text = string.Empty;
         }
 
         private void Controlador()
@@ -96,5 +105,21 @@ namespace pryFaro_IEFI
             Controlador();
         }
         #endregion
+
+        private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != (char)Keys.Space)
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

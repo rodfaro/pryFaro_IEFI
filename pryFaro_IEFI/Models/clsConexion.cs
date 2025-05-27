@@ -17,7 +17,7 @@ namespace pryFaro_IEFI.Models
         #region Metodos para Administradores
         public clsUsuariosReg IniciarSesion(clsUsuariosReg usuario)
         {
-            string query = "SELECT idUsuario, Usuario, Admin FROM Usuarios WHERE Usuario COLLATE SQL_Latin1_General_CP1_CS_AS = @Usuario AND @Passw COLLATE SQL_Latin1_General_CP1_CS_AS = Passw";
+            string query = "SELECT idUsuario, Usuario, Admin, Nombre, Direccion, Celular FROM Usuarios WHERE Usuario COLLATE SQL_Latin1_General_CP1_CS_AS = @Usuario AND @Passw COLLATE SQL_Latin1_General_CP1_CS_AS = Passw";
             clsUsuariosReg returnUsuario = new clsUsuariosReg();
             returnUsuario.idUser = -1;
             
@@ -39,6 +39,9 @@ namespace pryFaro_IEFI.Models
                     returnUsuario.idUser = reader.GetInt32(0);
                     returnUsuario.Usuario = reader.GetString(1);
                     returnUsuario.Admin = reader.GetBoolean(2);
+                    returnUsuario.Nombre = reader.GetString(3);
+                    returnUsuario.Direccion = reader.GetString(4);
+                    returnUsuario.Celular = reader.GetString(5);
                 }
 
             }
@@ -62,7 +65,10 @@ namespace pryFaro_IEFI.Models
             string query = $@"UPDATE Usuarios
                                 SET Usuario = @Usuario,
                                     Passw = @Passw,
-                                    Admin =  @Admin
+                                    Admin =  @Admin,
+                                    Nombre = @Nombre,
+                                    Direccion = @Direccion,
+                                    Celular = @Celular
                                 WHERE idUsuario = @Id";
 
             try
@@ -77,6 +83,9 @@ namespace pryFaro_IEFI.Models
                     command.Parameters.AddWithValue("@Usuario", usuario.Usuario);
                     command.Parameters.AddWithValue("@Passw", usuario.Passw);
                     command.Parameters.AddWithValue("@Admin", usuario.Admin);
+                    command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                    command.Parameters.AddWithValue("@Direccion", usuario.Direccion);
+                    command.Parameters.AddWithValue("@Celular", usuario.Celular);
                     command.Parameters.AddWithValue("@Id", usuario.idUser);
 
                     command.ExecuteNonQuery();
@@ -97,9 +106,8 @@ namespace pryFaro_IEFI.Models
         }
         public void CrearUsuario(clsUsuariosReg usuario)
         {
-            string query = $@"INSERT INTO Usuarios(Usuario, Passw, Admin)
-                                VALUES (@Usuario, @Passw, @Admin)";
-
+            string query = $@"INSERT INTO Usuarios(Usuario, Passw, Admin, Nombre, Direccion, Celular)
+                                VALUES (@Usuario, @Passw, @Admin, @Nombre, @Direccion, @Celular)";
             try
             {
                 if (conn.State == ConnectionState.Closed)
@@ -112,6 +120,9 @@ namespace pryFaro_IEFI.Models
                     command.Parameters.AddWithValue("@Usuario", usuario.Usuario);
                     command.Parameters.AddWithValue("@Passw", usuario.Passw);
                     command.Parameters.AddWithValue("@Admin", usuario.Admin);
+                    command.Parameters.AddWithValue("@Nombre", usuario.Nombre);
+                    command.Parameters.AddWithValue("@Direccion", usuario.Direccion);
+                    command.Parameters.AddWithValue("@Celular", usuario.Celular);
 
                     command.ExecuteNonQuery();
                 }
@@ -202,7 +213,9 @@ namespace pryFaro_IEFI.Models
 
         public bool VerificarUsuarioExistente(clsUsuariosReg usuario)
         {
-            string query = $@"SELECT COUNT(*) FROM Usuarios WHERE Usuario COLLATE SQL_Latin1_General_CP1_CS_AS = @Usuario";
+            string query = $@"SELECT COUNT(*) FROM Usuarios 
+                                WHERE Usuario COLLATE SQL_Latin1_General_CP1_CS_AS = @Usuario
+                                AND idUsuario != @Id";
             bool usuarioExistente = false;
 
             try
@@ -215,6 +228,7 @@ namespace pryFaro_IEFI.Models
                 using (SqlCommand command = new SqlCommand(query, conn))
                 {
                     command.Parameters.AddWithValue("@Usuario", usuario.Usuario);
+                    command.Parameters.AddWithValue("@Id", usuario.idUser);
 
                     int resultado = (int)command.ExecuteScalar();
 
