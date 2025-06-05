@@ -97,7 +97,6 @@
             this.Name = "frmSalir";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Guardar y salirr";
-            this.Load += new System.EventHandler(this.frmSalir_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

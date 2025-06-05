@@ -24,11 +24,10 @@ namespace pryFaro_IEFI
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            //Guarda todo
+            //Con el constructor recibe los datos enviados por el frmPrincipal y los carga en una variable local(_auditoria)
+            //Después se le agrega la Descripción y se ejecuta el metodo GuardarJornada
             _auditoria.Descripcion = txtDesc.Text.Trim();
-
             conn.GuardarJornada(_auditoria);
-
 
             Application.Exit();
         }
@@ -44,11 +43,6 @@ namespace pryFaro_IEFI
             {
                 btnSalir.Enabled = true;
             } else btnSalir.Enabled = false;
-        }
-
-        private void frmSalir_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

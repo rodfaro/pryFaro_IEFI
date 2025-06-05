@@ -70,9 +70,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(605, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(158, 21);
+            this.label1.Size = new System.Drawing.Size(157, 21);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Buscar por nombre:";
+            this.label1.Text = "Buscar por Usuario:";
             // 
             // txtSearch
             // 
@@ -81,6 +81,7 @@
             this.txtSearch.Size = new System.Drawing.Size(339, 29);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            this.txtSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearch_KeyPress);
             // 
             // dgvUsers
             // 

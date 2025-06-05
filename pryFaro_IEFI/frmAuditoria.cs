@@ -98,5 +98,11 @@ namespace pryFaro_IEFI
                 }
             }
         }
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
     }
 }

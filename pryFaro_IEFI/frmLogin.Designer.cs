@@ -65,6 +65,7 @@
             this.txtUsuario.Size = new System.Drawing.Size(222, 29);
             this.txtUsuario.TabIndex = 2;
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtPassw
             // 
@@ -76,6 +77,7 @@
             this.txtPassw.Size = new System.Drawing.Size(222, 29);
             this.txtPassw.TabIndex = 3;
             this.txtPassw.TextChanged += new System.EventHandler(this.txtPassw_TextChanged);
+            this.txtPassw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassw_KeyPress);
             // 
             // btnIniciarSesion
             // 

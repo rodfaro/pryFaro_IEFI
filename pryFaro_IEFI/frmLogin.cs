@@ -26,6 +26,7 @@ namespace pryFaro_IEFI
 
             clsUsuariosReg returnUsuario = conn.IniciarSesion(usuario);
 
+            //Si el idUsuario sigue siendo -1 significa que no encontro ningun user con esos datos.
             if (returnUsuario.idUser != -1)
             {
                 this.Hide();
@@ -39,6 +40,7 @@ namespace pryFaro_IEFI
             }
         }
 
+        //Controla todo los txt y que caracteres se ingresan en los inputs.
         #region Controladores
         private void Controlador()
         {
@@ -56,6 +58,19 @@ namespace pryFaro_IEFI
         private void txtPassw_TextChanged(object sender, EventArgs e)
         {
             Controlador();
+        }
+     
+
+        private void txtPassw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
         }
         #endregion
     }

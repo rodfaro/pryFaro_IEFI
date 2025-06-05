@@ -328,6 +328,66 @@ namespace pryFaro_IEFI.Models
                 }
             }
         }
+        public void GuardarTareas(List<clsTareas> lstTareas)
+        {
+            string query = $@"INSERT INTO Tareas(IdUsuario, Tarea, Fecha, Lugar, UniformeInsumo, LicenciaEstudio, 
+                            LicenciaVacacion, LicenciaMedica, LicenciaPersonal, ReclamoSalario, 
+                            ReclamoRecibo, HsExtra, Ausencia, PermisoTemporal, Retraso, Comentario)
+                                VALUES (@IdUsuario, @Tarea, @Fecha, @Lugar, @UniformeInsumo, @LicenciaEstudio, 
+                                        @LicenciaVacacion, @LicenciaMedica, @LicenciaPersonal, @ReclamoSalario, 
+                                        @ReclamoRecibo, @HsExtra, @Ausencia, @PermisoTemporal, @Retraso, @Comentario)";
+
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                using (SqlCommand command = new SqlCommand(query, conn))
+                {
+                    foreach (var tarea in lstTareas)
+                    {
+                        command.Parameters.Clear();
+
+                        command.Parameters.AddWithValue("@IdUsuario", tarea.IdUsuario);
+                        command.Parameters.AddWithValue("@Tarea", tarea.Tarea);
+                        command.Parameters.AddWithValue("@Fecha", tarea.Fecha);
+                        command.Parameters.AddWithValue("@Lugar", tarea.Lugar);
+
+                        command.Parameters.AddWithValue("@UniformeInsumo", tarea.UniformeInsumo);
+                        command.Parameters.AddWithValue("@LicenciaEstudio", tarea.LicenciaEstudio);
+                        command.Parameters.AddWithValue("@LicenciaVacacion", tarea.LicenciaVacacion);
+                        command.Parameters.AddWithValue("@LicenciaMedica", tarea.LicenciaMedica);
+                        command.Parameters.AddWithValue("@LicenciaPersonal", tarea.LicenciaPersonal);
+
+                        command.Parameters.AddWithValue("@ReclamoSalario", tarea.ReclamoSalario);
+                        command.Parameters.AddWithValue("@ReclamoRecibo", tarea.ReclamoRecibo);
+                        command.Parameters.AddWithValue("@HsExtra", tarea.HsExtra);
+                        command.Parameters.AddWithValue("@Ausencia", tarea.Ausencia);
+                        command.Parameters.AddWithValue("@PermisoTemporal", tarea.PermisoTemporal);
+                        command.Parameters.AddWithValue("@Retraso", tarea.Retraso);
+                        command.Parameters.AddWithValue("@Comentario", tarea.Comentario);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("Tareas guardadas exitosamente", "Tareas guardadas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error: " + ex.Message); ;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+        }
 
         public DataTable Listar()
         {
@@ -348,6 +408,41 @@ namespace pryFaro_IEFI.Models
                 {
                     adapter.Fill(dt);
                 };
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Error: {ex.Message}"); ;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return dt;
+        }
+        public DataTable ListarTareas()
+        {
+            string query = $@"SELECT u.Usuario, t.Tarea, t.Fecha, t.Lugar, t.UniformeInsumo, t.LicenciaEstudio, 
+                                t.LicenciaVacacion, t.LicenciaMedica, t.LicenciaPersonal, t.ReclamoSalario, 
+                                t.ReclamoRecibo, t.HsExtra, t.Ausencia, t.PermisoTemporal, t.Retraso, t.Comentario FROM Tareas t
+                            INNER JOIN Usuarios u ON u.idUsuario = t.IdUsuario";
+
+            DataTable dt = new DataTable();
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                using (SqlDataAdapter adapter = new SqlDataAdapter(query, conn))
+                {
+                    adapter.Fill(dt);
+                }
+                ;
             }
             catch (Exception ex)
             {
@@ -396,5 +491,6 @@ namespace pryFaro_IEFI.Models
             }
             return dt;
         }
+     
     }
 }

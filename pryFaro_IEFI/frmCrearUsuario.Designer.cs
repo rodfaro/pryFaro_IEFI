@@ -77,7 +77,8 @@
             this.txtCelular.MaxLength = 15;
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(240, 30);
-            this.txtCelular.TabIndex = 15;
+            this.txtCelular.TabIndex = 10;
+            this.txtCelular.TextChanged += new System.EventHandler(this.txtCelular_TextChanged);
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
             // 
             // label6
@@ -95,7 +96,8 @@
             this.txtDireccion.MaxLength = 145;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(240, 30);
-            this.txtDireccion.TabIndex = 13;
+            this.txtDireccion.TabIndex = 9;
+            this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             // 
             // label5
             // 
@@ -112,7 +114,8 @@
             this.txtNombre.MaxLength = 25;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(240, 30);
-            this.txtNombre.TabIndex = 11;
+            this.txtNombre.TabIndex = 8;
+            this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label1
@@ -133,7 +136,7 @@
             this.btnLimpiar.Location = new System.Drawing.Point(292, 320);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(115, 41);
-            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.TabIndex = 12;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -148,7 +151,7 @@
             this.btnCrear.Location = new System.Drawing.Point(167, 320);
             this.btnCrear.Name = "btnCrear";
             this.btnCrear.Size = new System.Drawing.Size(115, 41);
-            this.btnCrear.TabIndex = 8;
+            this.btnCrear.TabIndex = 11;
             this.btnCrear.Text = "Crear";
             this.btnCrear.UseVisualStyleBackColor = false;
             this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
@@ -180,8 +183,9 @@
             this.txtPassw.MaxLength = 30;
             this.txtPassw.Name = "txtPassw";
             this.txtPassw.Size = new System.Drawing.Size(240, 30);
-            this.txtPassw.TabIndex = 5;
+            this.txtPassw.TabIndex = 6;
             this.txtPassw.TextChanged += new System.EventHandler(this.txtPassw_TextChanged);
+            this.txtPassw.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassw_KeyPress);
             // 
             // label3
             // 
@@ -198,8 +202,9 @@
             this.txtUsuario.MaxLength = 30;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(240, 30);
-            this.txtUsuario.TabIndex = 3;
+            this.txtUsuario.TabIndex = 5;
             this.txtUsuario.TextChanged += new System.EventHandler(this.txtUsuario_TextChanged);
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // label2
             // 

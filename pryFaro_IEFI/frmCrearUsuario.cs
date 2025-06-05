@@ -22,8 +22,8 @@ namespace pryFaro_IEFI
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
-            //Verifica que no exista ese usuario
-            //Crea el usuario
+           
+            //Se instancia un usuario y se le rellena todo los datos para después crearlo.
             clsUsuariosReg usuario = new clsUsuariosReg();
             usuario.Usuario = txtUsuario.Text.Trim();
             usuario.Passw = txtPassw.Text.Trim();
@@ -34,6 +34,7 @@ namespace pryFaro_IEFI
                 usuario.Admin = true;
             else usuario.Admin = false;
 
+            //Verifica que no exista ese usuario
             bool usuarioExiste = clsConexion.VerificarUsuarioExistente(usuario);
             if (usuarioExiste == false)
             {
@@ -63,7 +64,8 @@ namespace pryFaro_IEFI
         }
         private void Controlador()
         {
-            if (txtUsuario.Text != string.Empty && txtPassw.Text != string.Empty)
+            if (txtUsuario.Text != string.Empty && txtPassw.Text != string.Empty &&
+                txtCelular.Text != string.Empty && txtDireccion.Text != string.Empty && txtNombre.Text != string.Empty)
                 btnCrear.Enabled = true;
             else btnCrear.Enabled = false;
         }
@@ -82,7 +84,6 @@ namespace pryFaro_IEFI
         {
             Controlador();
         }
-        #endregion
 
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -99,5 +100,34 @@ namespace pryFaro_IEFI
                 e.Handled = true;
             }
         }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txtPassw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+        
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+
+        private void txtCelular_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+        #endregion
     }
 }

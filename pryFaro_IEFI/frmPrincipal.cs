@@ -13,14 +13,16 @@ namespace pryFaro_IEFI
 {
     public partial class frmPrincipal : Form
     {
-        clsUsuariosReg _user;
-        int _tiempoTrabajoSeg = 0;
-
+       
+        //En el constructor recibe el usuario que se cargó en el LogIn con todo los datos(nombre, si es admin, etc)
+        //Y ese usuario se va pasando a todo las ventanas para saber con que user se esta trabajando,
         public frmPrincipal(clsUsuariosReg user)
         {
             InitializeComponent();
             _user = user;
         }
+        clsUsuariosReg _user;
+        int _tiempoTrabajoSeg = 0;
 
         #region Metodos del Timer y frmPrincipal internas
         private void frmPrincipal_Load(object sender, EventArgs e)
@@ -42,15 +44,16 @@ namespace pryFaro_IEFI
 
         private void frmPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
+            Timer.Stop();
             Application.Exit();
-            Timer.Stop();   
+            
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
             //Tiempo trabajado
             _tiempoTrabajoSeg++;
-            lblTiempoPrueba.Text = _tiempoTrabajoSeg.ToString();
+            lblTiempoPrueba.Text = $"{_tiempoTrabajoSeg.ToString()}s";
 
             //Muestra la fecha
             lblFecha.Text = DateTime.Now.ToString("dd/MM/yy HH:mm");
@@ -60,8 +63,10 @@ namespace pryFaro_IEFI
         #region VENTANAS 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Redondea los segundos a minutos para guardarlos en la BD
             int minTrabajados = (int)Math.Round((double)_tiempoTrabajoSeg / 60);
 
+            //Se carga todo los datos de la auditoria(user actual,  mins  trabajados) y los manda al frmSalir para agregar la descripcion y guardarlo.
             clsAuditar auditaroria = new clsAuditar();
             auditaroria.IdUsuario = _user.idUser;
             auditaroria.TiempoTrabajado = minTrabajados;
@@ -86,6 +91,20 @@ namespace pryFaro_IEFI
             frmAuditoria ventana = new frmAuditoria();
             ventana.ShowDialog();
         }
+        
+
+        private void registrarTareaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegistrarTarea ventana = new frmRegistrarTarea(_user);
+            ventana.ShowDialog();
+        }
+
+        private void visualizarTareasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVisulizarTareas ventanas = new frmVisulizarTareas();
+            ventanas.ShowDialog();
+        }
         #endregion
+
     }
 }

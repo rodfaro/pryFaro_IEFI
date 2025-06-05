@@ -24,9 +24,16 @@ namespace pryFaro_IEFI
             InitializeComponent();
             _user = usuario;
             _dgvUsers = dgvUsuarios;
+
+            //El constructor recibe el usuario que se selecciono en la grilla de frmAdministrarUsuarios
+            //de este modo sabe automaticamente cual va a editar
         }
+
+
         private void frmEditarUsuario_Load(object sender, EventArgs e)
         {
+            //En el load se carga en los txt todos los datos y la Id se utiliza en btnEditar para saber que user editar
+
             txtId.Text = _user.idUser.ToString();
             txtUsuario.Text = _user.Usuario;
             txtPassw.Text = _user.Passw;
@@ -41,6 +48,7 @@ namespace pryFaro_IEFI
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            //Se cambian todo los datos de ese user
             _user.idUser = int.Parse(txtId.Text.Trim());
             _user.Usuario = txtUsuario.Text.Trim();
             _user.Passw = txtPassw.Text.Trim();
@@ -52,7 +60,7 @@ namespace pryFaro_IEFI
             else if (cmbAdmin.SelectedIndex == 1)
                 _user.Admin = false;
 
-            //Verificar usuario existente
+            //Verifica si el nombre de usuario existente o no, si existe te salta error x llevarr el mismo nombre.
             bool usuarioExistente = conn.VerificarUsuarioExistente(_user);
             if (usuarioExistente == false) // se puede crear
             {
@@ -89,7 +97,8 @@ namespace pryFaro_IEFI
 
         private void Controlador()
         {
-            if (txtPassw.Text != string.Empty && txtUsuario.Text != string.Empty)
+            if (txtPassw.Text != string.Empty && txtUsuario.Text != string.Empty && txtNombre.Text != string.Empty
+                && txtDireccion.Text != string.Empty && txtCelular.Text != string.Empty)
             {
                 btnEditar.Enabled = true;
             } else btnEditar.Enabled = false;
@@ -104,7 +113,7 @@ namespace pryFaro_IEFI
         {
             Controlador();
         }
-        #endregion
+        
 
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -121,5 +130,34 @@ namespace pryFaro_IEFI
                 e.Handled = true;
             }
         }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txtPassw_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+
+        private void txtDireccion_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+
+        private void txtCelular_TextChanged(object sender, EventArgs e)
+        {
+            Controlador();
+        }
+        #endregion
     }
+
 }

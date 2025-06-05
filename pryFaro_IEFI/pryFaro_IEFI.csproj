@@ -85,14 +85,27 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegistrarTarea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistrarTarea.Designer.cs">
+      <DependentUpon>frmRegistrarTarea.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSalir.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSalir.Designer.cs">
       <DependentUpon>frmSalir.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVisulizarTareas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisulizarTareas.Designer.cs">
+      <DependentUpon>frmVisulizarTareas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\clsAuditar.cs" />
     <Compile Include="Models\clsConexion.cs" />
+    <Compile Include="Models\clsTareas.cs" />
     <Compile Include="Models\clsUsuariosReg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,8 +127,14 @@
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarTarea.resx">
+      <DependentUpon>frmRegistrarTarea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSalir.resx">
       <DependentUpon>frmSalir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisulizarTareas.resx">
+      <DependentUpon>frmVisulizarTareas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

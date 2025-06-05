@@ -32,6 +32,7 @@ namespace pryFaro_IEFI
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
+            //Permite filtrar por Usuarios segun lo que se introduzca en el txtSearch
             DataView dv = new DataView(_dtGlobal);
             dv.RowFilter = $"Usuario LIKE '{txtSearch.Text}%'";
             dgvUsers.DataSource= dv;
@@ -217,5 +218,10 @@ namespace pryFaro_IEFI
             }
         }
 
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
     }
 }
