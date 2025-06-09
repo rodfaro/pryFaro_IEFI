@@ -104,5 +104,10 @@ namespace pryFaro_IEFI
             if (!Char.IsLetter(e.KeyChar) && !Char.IsNumber(e.KeyChar) && e.KeyChar != (char)Keys.Back)
                 e.Handled = true;
         }
+
+        private void dgvLogins_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

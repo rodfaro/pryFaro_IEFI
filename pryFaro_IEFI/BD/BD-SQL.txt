@@ -12,7 +12,7 @@ CREATE TABLE Usuarios(
 	Admin BIT NOT NULL,
 	Nombre VARCHAR(50),
 	Direccion VARCHAR(150),
-	Celular INT
+	Celular VARCHAR(16)
 );
 GO
 

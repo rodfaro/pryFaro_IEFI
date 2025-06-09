@@ -79,6 +79,7 @@
             this.dgvLogins.ShowRowErrors = false;
             this.dgvLogins.Size = new System.Drawing.Size(1234, 528);
             this.dgvLogins.TabIndex = 0;
+            this.dgvLogins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLogins_CellContentClick);
             // 
             // frmAuditoria
             // 
